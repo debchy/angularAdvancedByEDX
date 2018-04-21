@@ -1,0 +1,32 @@
+<!-- <div *ngIf="searchResult; else elseBlock">
+    <h3>Total Results: {{searchResult.total_count}}</h3>
+    <ul>
+        <li *ngFor="let result of searchResult.items">
+            <a [href]='result.html_url' target="_blank">
+                <img [src]="result.owner.avatar_url" width="200px">
+                <h4>{{result.name}} <small>{{result.owner.login}}</small></h4>
+            </a>
+            <p>{{result.description}}</p>
+        </li>
+    </ul>
+</div>
+<ng-template #elseBlock>Loading..</ng-template> -->
+<h3>{{title}} - {{displayQuery}}</h3>
+<input placeholder="Enter Search Here" name="Query" [(ngModel)]='searchQuery'>
+<button (click)='sendQuery()'>Submit</button>
+<div *ngIf="searchResult; else elseBlock">
+    <h3 class="total">Total Results: {{searchResult.total_count}}</h3>
+    <ul class="list">
+        <li [ngStyle]="{background: (i % 2)===0?'silver':'white'}" class="list_item" *ngFor="let result of searchResult.items; index as i">
+            <a [href]="result.html_url">
+                <img class="avatar" [src]="result.owner.avatar_url" />
+                <h4 class="title">{{result.name | uppercase}}
+                    <small> by {{result.owner.login}}</small>
+                </h4>
+            </a>
+            <p class="description"> {{result.description}}</p>
+            <p>Created on {{result.created_at | date:"fullDate"}}</p>
+        </li>
+    </ul>
+</div>
+<ng-template #elseBlock>Loading...</ng-template>
