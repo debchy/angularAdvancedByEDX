@@ -12,14 +12,12 @@
 </div>
 <ng-template #elseBlock>Loading..</ng-template> -->
 <h3>{{title}} - {{displayQuery}}</h3>
-<form #myForm="ngForm" (ngSubmit)="sendQuery()">
+<form (ngSubmit)="sendQuery()" [formGroup]="form">
     <div *ngFor="let key of modelKeys">
-        {{key}}
-        <input name="{{key}}" placeholder="Enter {{key}} here" [(ngModel)]="model[key]" required *ngIf="key==='q'" appNoSpecialCharacters />
-        <input name="{{key}}" placeholder="Enter {{key}} here" [(ngModel)]="model[key]" minlength="2" maxlength="4" *ngIf="key==='stars'" appNoSpecialCharacters />
-        <input name="{{key}}" placeholder="Enter {{key}} here" [(ngModel)]="model[key]" *ngIf="key!=='q' && key!=='stars'" appNoSpecialCharacters />
+        <!-- {{key}} <input name="{{key}}" placeholder="Enter {{key}} here" [(ngModel)]="model[key]" /> -->
+        {{key}} <input placeholder="Enter {{key}} here" formControlName="{{key}}" />
     </div>
-    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    <button type="submit" [disabled]="!form.valid">Submit</button>
 </form>
 
 <div *ngIf="searchResult; else elseBlock">
@@ -37,4 +35,4 @@
         </li>
     </ul>
 </div>
-<ng-template #elseBlock>Loading...</ng-template>
+<ng-template #elseBlock>Loading...</ng-template>*
