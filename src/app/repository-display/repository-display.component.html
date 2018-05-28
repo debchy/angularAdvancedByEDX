@@ -1,0 +1,11 @@
+<li [ngStyle]="{background: (i % 2)===0?'silver':'white'}" class="list_item" *ngFor="let result of searchResults.items; index as i">
+    <a [href]="result.html_url" target="_blank">
+        <img class="avatar" [src]="result.owner.avatar_url" />
+        <h4 class="title">{{result.name | uppercase}}
+            <small> by {{result.owner.login}}</small>
+        </h4>
+    </a>
+    <p class="description"> {{result.description}}</p>
+    <p>Created on {{result.created_at | date:"fullDate"}}
+
+</li>

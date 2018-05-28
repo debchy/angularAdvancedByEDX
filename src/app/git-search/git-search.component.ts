@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 //import { GitSearchService } from "../git-search.service";
 import { UnifiedSearchService } from "../unified-search.service";
-import { GitSearch } from "../git-search"
+//import { GitSearch } from "../git-search"
+import { UnifiedSearch} from "../unified-search"
 import { ActivatedRoute, Router, ParamMap} from "@angular/router"
 import { AdvancedSearchModel } from "../advanced-search-model"
 
@@ -17,7 +18,7 @@ import { AdvancedSearchModel } from "../advanced-search-model"
 })
 export class GitSearchComponent implements OnInit {
   title: string;
-  searchResult: GitSearch;
+  searchResult: UnifiedSearch;
   searchQuery: string;
   displayQuery: string;
 
@@ -48,7 +49,7 @@ export class GitSearchComponent implements OnInit {
       (response)=>
       {
         console.log(response);
-        this.searchResult=response.repositories;
+        this.searchResult=response;
       },
       (error)=>{
         alert("Error= " +error.statusText);
