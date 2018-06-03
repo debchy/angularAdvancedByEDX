@@ -13,7 +13,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes} from "@angular/router";
 import { NoSpecialCharactersDirective } from './no-special-characters.directive';
 import { RepositoryDisplayComponent } from './repository-display/repository-display.component';
-import { CodeDisplayComponent } from './code-display/code-display.component'
+import { CodeDisplayComponent } from './code-display/code-display.component';
+import { FadeDirective } from './fade.directive';
+import { FavoriteTextPipe } from './favorite-text.pipe'
 
 const appRoutes: Routes=[
   {path:'', component:HomePageComponent},
@@ -30,7 +32,9 @@ const appRoutes: Routes=[
     NotFoundComponent,
     NoSpecialCharactersDirective,
     RepositoryDisplayComponent,
-    CodeDisplayComponent
+    CodeDisplayComponent,
+    FadeDirective,
+    FavoriteTextPipe
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,10 @@ const appRoutes: Routes=[
     ReactiveFormsModule
   ],
   providers: [GitSearchService,GitUsersService,GitCodeSearchService, UnifiedSearchService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    FadeDirective,
+    FavoriteTextPipe
+  ]
 })
 export class AppModule { }

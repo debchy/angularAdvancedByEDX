@@ -63,7 +63,9 @@ export class GitSearchComponent implements OnInit {
 
   handleFavorite=(id)=>{
     console.log('event received in parent component')
-    return this.favorites.push(id);
+    let index= this.favorites.indexOf(id);
+    if(index>=0)this.favorites.splice(index,1);
+    else this.favorites.push(id);
   }
 
   sendQuery=(f)=>{

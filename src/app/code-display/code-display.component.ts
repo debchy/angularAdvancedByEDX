@@ -17,6 +17,7 @@ export class CodeDisplayComponent implements OnInit {
   }
 
   addFavorite=(item)=>{
+    console.log(item.repository.id);
     this.updateFavorite.emit(item.repository.id)
   }
 
